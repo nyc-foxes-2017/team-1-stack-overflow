@@ -1,0 +1,30 @@
+<div class="post-container">
+  <%Question.all.each do |question| %>
+  <article id="<%=question.id%>">
+    <div class="votes">
+      <div class="count">
+        <%= question.votes.count %>
+      </div>
+      <div class="mini">
+        votes
+      </div>
+    </div>
+    <div class="answers">
+      <div class="count">
+        <%= question.answers.count %>
+      </div>
+      <div class="mini">
+        answers
+      </div>
+    </div>
+    <div class="views">
+      <div class="count">
+        <%= question.views %>
+      </div>
+      <div class="mini">
+        views
+      </div>
+    </div>
+    <h3 class="inline-block"> <a href="/questions<%=question.id%>"> <%= question.question_content %> </a> </h2>
+  </article>
+    <% end%>
