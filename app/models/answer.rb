@@ -1,5 +1,5 @@
 class Answer < ActiveRecord::Base
-  validates :answer_content, :best_answer, presence: true
+  validates :answer_content, presence: true
   validates :user, :question, presence: true
 
   belongs_to :user
