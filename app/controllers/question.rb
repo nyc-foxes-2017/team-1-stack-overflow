@@ -27,6 +27,11 @@ end
 
 # Stretch Challenges
 
+get '/questions/:id/edit' do
+  @question = Question.find_by(id: params[:id])
+  erb :'questions/edit'
+end
+
 put '/questions/:id/edit' do
   question = Question.find_by(id: params[:id])
   question = update_attributes(params[:question])
