@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <link href="https://fonts.googleapis.com/css?family=Wire+One" rel="stylesheet">
   <!--
     normalize.css removes cross-browser differences in defaults, e.g.,
     differences in how form elements appear between Firefox and IE
@@ -24,8 +25,10 @@
       <nav>
           <button type="button" class="transparent" onclick="location.href='/users/login'"/> Login </button>
           <button type="button" onclick="location.href='/users/new'"/> Register </button>
-          <button type="button" class="left" onclick="location.href='/'"/> Home </button>
-
+          <a class="logo-link" href="/">
+            <img class="logo" src="images/icon.png" class="left">
+            <span class="logotext light">stomp</span><span class="logotext heavy">overflow</span>
+          </a>
       </nav>
   </div>
   <div class="container">

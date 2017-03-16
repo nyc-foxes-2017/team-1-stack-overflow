@@ -7,6 +7,9 @@ body {
   letter-spacing: .02em;
 }
 
+a {
+  text-decoration:none;
+}
 nav {
   margin: 0px auto;
   width: 800px;
@@ -160,6 +163,31 @@ article a {
   color: #9199a1;
 }
 
+.logo {
+  width: 35px;
+  height: 35px;
+  vertical-align: middle;
+  margin-top: 15px;
+  margin-left: 20px;
+}
+
+.logotext {
+  font-family: 'Wire One', sans-serif;
+  font-size: 2em;
+  vertical-align: bottom;
+}
+
+.light {
+  font-weight: 500;
+}
+
+.heavy {
+  font-weight: 900;
+}
+
+.logo-link{
+  color:black;
+}
 * {
   -webkit-box-sizing: border-box;
      -moz-box-sizing: border-box;
