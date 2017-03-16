@@ -14,7 +14,8 @@ end
 post '/questions/ask' do
 # Save the question into database, otherwise show page with
   @question = Question.new(params[:question])
-  @question.user_id = session[:user_id]
+  @question.views = 0
+  @question.user_id = session[:user]
   if @question.save
     redirect "/questions/#{@question.id}"
   else
