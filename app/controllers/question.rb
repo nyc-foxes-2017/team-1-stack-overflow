@@ -2,7 +2,7 @@ get '/questions' do
 # List out the questions
   @questions = Question.all
   erb :'questions/index'
-  
+
 end
 
 get '/questions/new' do
@@ -11,7 +11,7 @@ get '/questions/new' do
 end
 
 post '/questions/new' do
-# Save the question into database, otherwise show page with 
+# Save the question into database, otherwise show page with
   @question = Question.new(params[:question])
   if @question.save
     redirect "/questions/#{@question.id}"

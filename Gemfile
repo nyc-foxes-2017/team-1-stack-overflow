@@ -25,6 +25,8 @@ group :test do
   gem 'capybara'
 end
 
+gem 'actionview'
+
 group :test, :development do
   gem 'factory_girl'
   gem 'faker'
