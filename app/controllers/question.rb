@@ -45,12 +45,13 @@ end
 
 put '/questions/:id/edit' do
   question = Question.find_by(id: params[:id])
-  question = update_attributes(params[:question])
-  redirect "/questions/#{@question.id}"
+
+  question.update_attributes(params[:question])
+  redirect "/questions/#{question.id}"
 end
 
 delete '/questions/:id/delete' do
   question = Question.find_by(id: params[:id])
   question.destroy
-  redirect '/questions'
+  redirect '/'
 end
