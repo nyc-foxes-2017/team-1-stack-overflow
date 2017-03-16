@@ -23,10 +23,15 @@
 <body>
   <div class="header">
       <nav>
-          <button type="button" class="transparent" onclick="location.href='/login'"/> Login </button>
-          <button type="button" onclick="location.href='/users/new'"/> Register </button>
+          <% if !session[:user] %>
+            <button type="button" class="transparent" onclick="location.href='/login'"/> Login </button>
+            <button type="button" onclick="location.href='/users/new'"/> Register </button>
+          <% else %>
+            <button type="button" class="transparent" onclick="location.href='/users/<%= session[:user] %>'"/> <%= User.find(session[:user]).username %> </button>
+            <button type="button" class="transparent" onclick="location.href='/logout'"/> Logout </button>
+          <% end %>
           <a class="logo-link" href="/">
-            <img class="logo" src="images/icon.png" class="left">
+            <img class="logo" src="/images/icon.png" class="left">
             <span class="logotext light">stomp</span><span class="logotext heavy">overflow</span>
           </a>
       </nav>
