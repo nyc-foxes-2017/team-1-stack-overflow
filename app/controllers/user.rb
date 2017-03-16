@@ -33,9 +33,12 @@ get '/logout' do
   redirect '/login'
 end
 
-get 'users/:id' do
+get '/users/:id' do
   @user = User.find_by(id: params[:id])
   if @user
+    @questions = @user.questions
+    @answers = @user.comments
+    @comments = @user.answers
     erb :'users/show'
   else
     erb :'404'
@@ -44,8 +47,11 @@ end
 
 # STRETCH
 
-get 'users/:id/edit' do
+get '/users/:id/edit' do # maybe, or maybe just form somewhere else
 end
 
-delete 'users/:id' do
+put '/users/:id' do
+end
+
+delete '/users/:id' do
 end
