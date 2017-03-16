@@ -40,6 +40,10 @@ nav button:hover{
   background-color:#07c
 }
 
+.block {
+  display: block;
+}
+
 .inline-block {
   display:inline-block;
 }
