@@ -21,10 +21,26 @@ Answer.create! [
   {:answer_content => 'javascript it this is an answer i dont know what to say', question_id: 3, :user_id => 1, best_answer: false},
 ]
 
-# Comment.create! [
-#   {:comment_content => 'use ruby and bla bla bla bla', :user_id => 2, :c},
+Comment.create! [
+  {:comment_content => 'this is a good question about ruby', :user_id => 2, :commentable_type => 'question', :commentable_id => 1},
+  {:comment_content => 'this is a good answer about ruby', :user_id => 2, :commentable_type => 'comment', :commentable_id => 1},
+  {:comment_content => 'this is a good question about website', :user_id => 1, :commentable_type => 'question', :commentable_id => 2}
+]
 
-# ]
+Vote.create! [
+ {:up_down => 100, :votable_type => 'question', :votable_id => 1},
+ {:up_down => 200, :votable_type => 'question', :votable_id => 2},
+ {:up_down => 300, :votable_type => 'question', :votable_id => 3},
+ {:up_down => 400, :votable_type => 'question', :votable_id => 4},
+ {:up_down => 100, :votable_type => 'answer', :votable_id => 1},
+ {:up_down => 200, :votable_type => 'answer', :votable_id => 2},
+ {:up_down => 300, :votable_type => 'answer', :votable_id => 3},
+ {:up_down => 400, :votable_type => 'answer', :votable_id => 4},
+ {:up_down => 1, :votable_type => 'comment', :votable_id => 1},
+ {:up_down => 2, :votable_type => 'comment', :votable_id => 2},
+ {:up_down => 3, :votable_type => 'comment', :votable_id => 3}
+]
+
 
 
 
