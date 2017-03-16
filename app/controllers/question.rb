@@ -22,7 +22,15 @@ post '/questions/new' do
 end
 
 get '/questions/:id' do
-  erb :'questions/show'
+  @question = Question.find_by(id: params[:id])
+  if @question
+    @answers = @question.answers
+    @question_comments = @question.comments
+    @answer_comments = @answers.map { |answer| answer.comments }
+    erb :'questions/show'
+  else
+    erb :'404'
+  end
 end
 
 # Stretch Challenges
