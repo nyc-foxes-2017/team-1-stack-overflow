@@ -1,3 +1,14 @@
+
+<div class="post-header inline-block">
+ <h3 class="inline-block">Top Questions</h3>
+
+ <button type="button" class="btn-outlined right" onclick="location.href='/questions/ask'"/> Ask A Question </button>
+</div>
+
+
+
+
+
 <div class="post-container">
   <%Question.all.each do |question| %>
   <article id="<%=question.id%>">
@@ -9,7 +20,13 @@
         votes
       </div>
     </div>
-    <div class="answers">
+    <% if question.has_best_answer? %>
+      <div class="answers answer-accepted">
+    <% elsif question.answers.count >=1 %>
+      <div class="answers answered">
+    <% else %>
+      <div class="answers">
+    <% end %>
       <div class="count">
         <%= question.answers.count %>
       </div>
@@ -25,6 +42,11 @@
         views
       </div>
     </div>
-    <h3 class="inline-block"> <a href="/questions/<%=question.id%>"> <%= question.question_content %> </a> </h2>
+
+    <h3 class="inline-block"> <a class="question-link" href="/questions/<%=question.id%>"> <%= question.question_content %> </a> </h3>
+
+      <span class="time-created">
+         Created <%= question.time_since_posted %> ago by <a href="/users/<%=question.user_id%>"> <%=question.user.username %> </a>
+      </span>
   </article>
     <% end%>

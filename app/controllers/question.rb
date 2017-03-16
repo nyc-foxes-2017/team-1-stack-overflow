@@ -2,13 +2,14 @@ get '/questions' do
 # List out the questions
   @questions = Question.all
   erb :'questions/index'
-  
+
 end
 
 get '/questions/ask' do
 # Shows a form for a new question
   erb :'questions/new'
 end
+
 
 post '/questions/ask' do
 # Save the question into database, otherwise show page with
