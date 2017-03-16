@@ -39,6 +39,8 @@ class CreateDatabaseTasks < ActiveRecord::Migration
     create_table :comments do |t|
       t.text :comment_content, null: false
       t.timestamps
+      t.integer :commentable_id, null: false
+      t.string :commentable_type, null: false
     end
 
     add_foreign_key :comments, :users
@@ -49,10 +51,5 @@ class CreateDatabaseTasks < ActiveRecord::Migration
     end
 
     create_join_table :questions, :tags
-
-    create_table :commentables_comments do |t|
-      t.integer :commentable_id, null: false
-      t.string :commentable_type, null: false
-    end
   end
 end
