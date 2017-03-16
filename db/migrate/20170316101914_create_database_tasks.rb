@@ -49,5 +49,10 @@ class CreateDatabaseTasks < ActiveRecord::Migration
     end
 
     create_join_table :questions, :tags
+
+    create_table :commentables_comments do |t|
+      t.integer :commentable_id, null: false
+      t.string :commentable_type, null: false
+    end
   end
 end
