@@ -9,7 +9,8 @@ class CreateDatabaseTasks < ActiveRecord::Migration
 
     create_table :votes do |t|
       t.integer :up_down, null: false
-      t.integer :votable_id, null: false,
+      t.integer :user_id, null: false
+      t.integer :votable_id, null: false
       t.string :votable_type, null: false
       t.timestamps
     end
@@ -20,6 +21,7 @@ class CreateDatabaseTasks < ActiveRecord::Migration
       t.string :title, null: false
       t.text :question_content, null: false
       t.integer :views, null: false
+      t.ingeter :user_id, null: false
       t.timestamps
     end
 
@@ -30,6 +32,7 @@ class CreateDatabaseTasks < ActiveRecord::Migration
       t.text :answer_content, null: false
       t.boolean :best_answer
       t.integer :question_id, null: false
+      t.integer :user_id, null: false
       t.timestamps
     end
 
@@ -39,6 +42,7 @@ class CreateDatabaseTasks < ActiveRecord::Migration
     create_table :comments do |t|
       t.text :comment_content, null: false
       t.timestamps
+      t.integer :user_id, null: false
       t.integer :commentable_id, null: false
       t.string :commentable_type, null: false
     end
