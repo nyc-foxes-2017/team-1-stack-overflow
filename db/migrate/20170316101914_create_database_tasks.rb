@@ -21,7 +21,7 @@ class CreateDatabaseTasks < ActiveRecord::Migration
       t.string :title, null: false
       t.text :question_content, null: false
       t.integer :views, null: false
-      t.ingeter :user_id, null: false
+      t.integer :user_id, null: false
       t.timestamps
     end
 
@@ -37,7 +37,7 @@ class CreateDatabaseTasks < ActiveRecord::Migration
     end
 
     add_foreign_key :answers, :users
-    add_foreign_key :questions, :answers
+    add_foreign_key :answers, :questions
 
     create_table :comments do |t|
       t.text :comment_content, null: false
