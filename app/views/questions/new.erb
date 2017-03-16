@@ -1,0 +1,14 @@
+<%= erb :'partials/_errors'%>
+<h2>Ask Away.</h2>
+<div>
+  <form method="post" action="/questions/ask">
+    <label for="title-input">Title: </label>
+    <textarea name="question[title]" cols="60" rows="1" placeholder="What's your programming question? Be specific."></textarea>
+    <br>
+    <br>
+    <label for="content-input"></label>
+    <textarea name="question[question_content]" cols="65" rows="10"></textarea>
+    <br>
+    <input class="pretty_button" type="submit" value="Post Your Question">
+  </form>
+</div>
