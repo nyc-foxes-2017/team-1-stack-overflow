@@ -6,4 +6,8 @@ class Question < ActiveRecord::Base
   has_many :answers
   has_many :comments, as: :commentable
   has_many :votes, as: :votable
+
+  def has_best_answer?
+    self.answers.map { |answer| answer.best_answer }.include?(true)
+  end
 end

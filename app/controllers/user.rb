@@ -39,11 +39,10 @@ get '/users/:id' do
   @user = User.find_by(id: params[:id])
   if @user
     @questions = @user.questions
-    @answers = @user.comments
-    @comments = @user.answers
+    @answers = @user.answers
     erb :'users/show'
   else
-    erb :'404'
+    redirect '/404'
   end
 end
 
