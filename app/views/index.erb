@@ -43,7 +43,7 @@
       </div>
     </div>
 
-    <h3 class="inline-block"> <a class="question-link" href="/questions/<%=question.id%>"> <%= question.question_content %> </a> </h3>
+    <h3 class="inline-block"> <a class="question-link" href="/questions/<%=question.id%>"> <%= question.title %> </a> </h3>
 
       <span class="time-created">
          Created <%= question.time_since_posted %> ago by <a href="/users/<%=question.user_id%>"> <%=question.user.username %> </a>

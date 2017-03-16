@@ -1,0 +1,104 @@
+
+<table class = "question-main">
+  <tbody>
+    <tr>
+      <td>
+      <h3><%= @question.title %></h3>
+    </td>
+
+      <td>
+        <a href = "/questions/ask"> Ask Question</a>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<table class = "question-properties">
+  <tbody>
+    <tr>
+      <td class="votecell">
+        <div class="votes">
+          <a href="#">Upvote</a>
+        <span><%= @question.votes.count %></span>
+        <a href="#">Downvote</a
+      </div>
+      </td>
+      <td class="postcell">
+        <div>
+        <%= @question.question_content %>
+      </div>
+
+      <div>
+        <a href="#">comment</a>
+      </div>
+
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<table class = "question-comments">
+  <tbody>
+    <tr>
+      <td class="">
+
+        <% @question.comments.each do |question_comment| %>
+          <p><%= question_comment.comment_content %></p>
+        <%end %>
+
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<% @question.answers.each do |answer| %>
+<table class = "answer-properties">
+  <tbody>
+    <tr>
+      <td class="votecell">
+        <div class="votes">
+          <a href="#">Upvote</a>
+          <span><%= answer.votes.count %></span>
+          <a href="#">Downvote</a
+      </div>
+      </td>
+      <td class="postcell">
+
+      <div>
+        <%= answer.answer_content %>
+      </div>
+
+      <div>
+        <a href="#">comment</a>
+      </div>
+
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<table class = "answer-comments">
+  <tbody>
+    <tr>
+      <td class="">
+
+        <% answer.comments.each do |answer_comment| %>
+          <p><%=answer_comment.comment_content %></p>
+        <%end %>
+
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<% end %>
+
+
+
+<form method="post" action='/questions/<%="#{@question.id}"%>/answers'>
+  <textarea class="block" name="answer[answer_content]" cols="65" rows="10"></textarea>
+  <div class="block">
+    <input class="pretty_button" type="submit" value="Post Your Answer">
+  </div>
+</form>
+
