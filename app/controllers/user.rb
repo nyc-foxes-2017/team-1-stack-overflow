@@ -8,7 +8,7 @@ post '/login' do
     session[:user] = user.id
     redirect '/'
   else
-    @error_message = "Login failed."
+    @errors = ["Login failed."]
     erb :'users/login'
   end
 end
@@ -23,7 +23,7 @@ post '/users' do
     session[:user] = user.id
     redirect '/'
   else
-    @error_messages = user.errors.full_messages
+    @errors = user.errors.full_messages
     erb :'users/new'
   end
 end
