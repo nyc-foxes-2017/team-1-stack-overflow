@@ -6,6 +6,7 @@ post '/login' do
   user = User.find_by(email: params[:email])
   if user && user.authenticate(params[:password])
     session[:user] = user.id
+    p session[:user]
     redirect '/'
   else
     @errors = ["Login failed."]
@@ -30,6 +31,7 @@ end
 
 get '/logout' do
   session[:user] = nil
+  p session[:user]
   redirect '/login'
 end
 
