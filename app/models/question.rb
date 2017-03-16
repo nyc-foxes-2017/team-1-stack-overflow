@@ -1,4 +1,5 @@
 class Question < ActiveRecord::Base
+  include Votables
   validates :question_content, :title, presence: true
   validates :user, presence: true
 
@@ -10,4 +11,5 @@ class Question < ActiveRecord::Base
   def has_best_answer?
     self.answers.map { |answer| answer.best_answer }.include?(true)
   end
+
 end

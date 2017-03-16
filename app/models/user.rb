@@ -14,7 +14,6 @@ class User < ActiveRecord::Base
   end
 
   def reputation
-    binding.pry
-    (self.questions.map { |question| question.votes.map { |vote| vote.up_down }.inject(:+) }.inject(:+)) + (self.answers.map { |answer| answer.votes.map { |vote| vote.up_down }.inject(:+) }.inject(:+))
+    self.questions.map { |question| question.score }.pop + self.answers.map { |answer| answer.score }.pop
   end
 end
