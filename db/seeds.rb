@@ -1,11 +1,31 @@
-# 20.times do
-#   post = Post.create!( title: Faker::Company.catch_phrase,
-#                username: Faker::Internet.user_name,
-#                comment_count: rand(1000),
-#                created_at: Time.now - rand(20000))
+User.create! [
 
-#   vote_count = rand(100)
-#   vote_count.times do
-#     post.votes.create!(value: 1)
-#   end
-# end
+  {:username => 'michael', :email =>'michael@email.com', :password_digest => 'password'},
+  {:username => 'peter', :email =>'peter@email.com', :password_digest => 'password'},
+  {:username => 'thomas', :email =>'thomas@email.com', :password_digest => 'password'},
+  {:username => 'sophia', :email =>'sophia@email.com', :password_digest => 'password'}
+
+]
+
+Question.create! [
+  {:question_content => 'how do i do something in ruby?', :user_id => 1},
+  {:question_content => 'how do i make my website pretty?', :user_id => 2},
+  {:question_content => 'how do i do something in javascript?', :user_id => 3},
+  {:question_content => 'how do i activerecord?', :user_id => 4}
+]
+
+Answer.create! [
+  {:answer_content => 'use ruby and bla bla bla bla', question_id: 1, :user_id => 2, best_answer: false},
+  {:answer_content => 'ruby sucks use something else', question_id: 1, :user_id => 3, best_answer: true},
+  {:answer_content => 'use css to make our website pretty', question_id: 2, :user_id => 4, best_answer: false},
+  {:answer_content => 'javascript it this is an answer i dont know what to say', question_id: 3, :user_id => 1, best_answer: false},
+]
+
+# Comment.create! [
+#   {:comment_content => 'use ruby and bla bla bla bla', :user_id => 2, :c},
+
+# ]
+
+
+
+
