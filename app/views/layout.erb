@@ -16,9 +16,20 @@
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
   <script src="/js/application.js"></script>
 
-  <title></title>
+  <title>SToMP Overflow</title>
 </head>
+
 <body>
-  <%= yield %>
+  <div class="header">
+      <nav>
+          <button type="button" class="transparent" onclick="location.href='/users/login'"/> Login </button>
+          <button type="button" onclick="location.href='/users/new'"/> Register </button>
+          <button type="button" class="left" onclick="location.href='/'"/> Home </button>
+
+      </nav>
+  </div>
+  <div class="container">
+    <%= yield %>
+  </div>
 </body>
 </html>
