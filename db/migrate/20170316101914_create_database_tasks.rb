@@ -19,6 +19,7 @@ class CreateDatabaseTasks < ActiveRecord::Migration
     create_table :questions do |t|
       t.string :title, null: false
       t.text :question_content, null: false
+      t.integer :views, null: false
       t.timestamps
     end
 
