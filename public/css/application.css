@@ -4,8 +4,12 @@ body {
   max-width: 700px;
   margin: 0 auto;
   font-family: Arial,"Helvetica Neue",Helvetica,sans-serif;
+  letter-spacing: .02em;
 }
 
+a {
+  text-decoration:none;
+}
 nav {
   margin: 0px auto;
   width: 800px;
@@ -14,6 +18,13 @@ nav {
 .left {
   float:left;
   margin-left:20px;
+}
+.right {
+  float:right;
+  margin-left:20px;
+}
+h3 {
+  font-weight: 100;
 }
 
 nav button {
@@ -28,11 +39,32 @@ nav button:hover{
   background-color:#07c
 }
 
+.pretty_button {
+  color:#fff;
+  background-color: #0095ff;
+  border-color:#07c;
+  margin-right:20px;
+  margin-top:20px;
+  }
+
+.pretty_button:hover {
+  background-color:#07c
+}
+
+.block {
+  display: block;
+}
+
 .inline-block {
   display:inline-block;
 }
+
+.post-header {
+  width: 100%;
+  height: 50px;
+}
 .votes {
-  padding: 8px 5px ;
+  padding: 5px 5px ;
   line-height: 1;
   display: inline-block;
   height: 38px;
@@ -41,10 +73,14 @@ nav button:hover{
   font-size: 16px;
   color: #848d95;
   text-align: center;
+  vertical-align: middle;
 }
 
+.question-link:hover {
+  color: #3af;
+}
 .views {
-  padding: 8px 5px ;
+  padding: 5px 5px ;
   line-height: 1;
   display: inline-block;
   height: 38px;
@@ -53,11 +89,12 @@ nav button:hover{
   font-size: 16px;
   color: #848d95;
   text-align: center;
+  vertical-align: middle;
 }
 
 
 .answers {
-  padding: 8px 5px;
+  padding:5px 5px;
   line-height: 1;
   display: inline-block;
   height: 38px;
@@ -66,6 +103,22 @@ nav button:hover{
   font-size: 16px;
   color: #848d95;
   text-align: center;
+  vertical-align: middle;
+}
+
+.answered {
+  color: #45A163;
+  border-width: 1px;
+  border-style:solid;
+  border-color: rgba(69,161,99, 1);
+
+}
+
+
+
+.answer-accepted {
+  color: #fff;
+  background-color: #5fba7d;
 }
 
 .mini {
@@ -76,6 +129,21 @@ nav button:hover{
   border-color: transparent;
   color: #07C;
   box-shadow: none;
+}
+
+.btn-outlined{
+  color: #07c;
+  background-color: rgba(0,119,204,0);
+  border-color: #0095ff;
+  border-width: 1px;
+  box-shadow: none;
+  vertical-align: middle;
+  margin: 1em;
+}
+
+.btn-outlined:hover {
+  background-color: #e6f4ff
+
 }
 .transparent:hover {
   background-color: rgb(0,119,204);
@@ -97,13 +165,47 @@ nav button:hover{
   border: 1px dotted black;
 }
 article {
-  border-bottom: 1px gray solid;
+  border-top: 1px gray solid;
 }
 article a {
   color:#07C;
   line-height: 1.3;
-  margin-bottom: 1.2em;
   text-decoration: none;
 }
 
+.time-created {
+  margin: 0;
+  font-size: 11px;
+  color: #9199a1;
+}
 
+.logo {
+  width: 35px;
+  height: 35px;
+  vertical-align: middle;
+  margin-top: 15px;
+  margin-left: 20px;
+}
+
+.logotext {
+  font-family: 'Wire One', sans-serif;
+  font-size: 2em;
+  vertical-align: bottom;
+}
+
+.light {
+  font-weight: 500;
+}
+
+.heavy {
+  font-weight: 900;
+}
+
+.logo-link{
+  color:black;
+}
+* {
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+}
