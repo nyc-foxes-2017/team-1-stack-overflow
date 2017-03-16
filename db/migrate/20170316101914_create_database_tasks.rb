@@ -9,8 +9,8 @@ class CreateDatabaseTasks < ActiveRecord::Migration
 
     create_table :votes do |t|
       t.integer :up_down, null: false
-      t.integer :content_id, null: false,
-      t.string :content_type, null: false
+      t.integer :votable_id, null: false,
+      t.string :votable_type, null: false
       t.timestamps
     end
 
@@ -18,7 +18,7 @@ class CreateDatabaseTasks < ActiveRecord::Migration
 
     create_table :questions do |t|
       t.string :title, null: false
-      t.text :text, null: false
+      t.text :question_content, null: false
       t.timestamps
     end
 
@@ -26,7 +26,7 @@ class CreateDatabaseTasks < ActiveRecord::Migration
 
     create_table :answers do |t|
       t.string :title, null: false
-      t.text :text, null: false
+      t.text :answer_content, null: false
       t.boolean :best_answer
       t.integer :question_id, null: false
       t.timestamps
@@ -36,7 +36,7 @@ class CreateDatabaseTasks < ActiveRecord::Migration
     add_foreign_key :questions, :answers
 
     create_table :comments do |t|
-      t.text :text, null: false
+      t.text :comment_content, null: false
       t.timestamps
     end
 
