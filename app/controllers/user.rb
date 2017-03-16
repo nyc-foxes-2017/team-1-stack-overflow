@@ -33,6 +33,15 @@ get '/logout' do
   redirect '/login'
 end
 
+get 'users/:id' do
+  @user = User.find_by(id: params[:id])
+  if @user
+    erb :'users/show'
+  else
+    erb :'404'
+  end
+end
+
 # STRETCH
 
 get 'users/:id/edit' do
