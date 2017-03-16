@@ -15,6 +15,7 @@ nav {
   width: 800px;
 }
 
+
 .left {
   float:left;
   margin-left:20px;
@@ -199,6 +200,11 @@ article a {
 
 .heavy {
   font-weight: 900;
+}
+
+.profile-pic {
+  width: 100px;
+  height: 100px;
 }
 
 .logo-link{

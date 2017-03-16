@@ -10,10 +10,19 @@ class User < ActiveRecord::Base
   has_many :votes
 
   def people_reached
+    return 0 if self.questions.count == 0 && self.answers.count == 0
     (self.questions + self.answered_questions).map { |question| question.views }.inject(:+)
   end
 
   def reputation
-    self.questions.map { |question| question.score }.pop + self.answers.map { |answer| answer.score }.pop
+    if self.questions.count > 0 && self.answers.count > 0
+      self.questions.map { |question| question.score }.pop + self.answers.map { |answer| answer.score }.pop
+    elsif self.questions.count > 0 && self.answers.count == 0
+      self.questions.map { |question| question.score }.pop
+    elsif self.questions.count == 0 && self.answers.count > 0
+      self.answers.map { |answer| answer.score }.pop
+    else
+      0
+    end
   end
 end
