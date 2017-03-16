@@ -2,6 +2,8 @@
   <div class='user-header'>
     <h3><%= @user.username %></h3>
     <img class='profile-pic' src="/images/users/dummy_profile.jpg">
+    <div class='count'><%= @user.reputation %></div>
+    <div class='mini'>reputation</div>
     <p class='user-description'>User descriptions - coming soon to a #stretchgoal near you</p>
     <div class='user-answers'>
       <div class='count'><%= @answers.count %></div>
