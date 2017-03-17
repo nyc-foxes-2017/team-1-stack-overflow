@@ -8,7 +8,11 @@ post '/questions/:question_id/vote' do
   else
     vote.destroy
   end
-  redirect "/questions/#{params[:question_id]}"
+  if request.xhr?
+    question.score.to_s
+  else
+    redirect "/questions/#{params[:question_id]}"
+  end
 end
 
 post '/answers/:answer_id/vote' do

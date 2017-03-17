@@ -25,5 +25,24 @@ $(document).ready(function() {
     })
 
   })
+
+  //upvote & downvote
+
+  $('.question-properties .upvote, .question-properties .downvote').submit(function() {
+    event.preventDefault();
+    var params = $(this).serializeArray().reduce(function(params, pair) {
+      params[pair.name] = pair.value;
+      return params;
+    }, {});
+    $.ajax({
+      url: $(this).attr('action'),
+      type: 'POST',
+      data: params
+    }).done(function(data) {
+      $('.question-properties #score').text(data);
+    });
+  });
+
+
 });
 

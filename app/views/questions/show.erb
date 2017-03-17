@@ -26,16 +26,16 @@
     <tr>
       <td class="votecell">
         <div class="questionvotes">
-        <form action='/questions/<%= @question.id %>/vote' method='post'>
-          <input type='hidden' name='up_down' value='1'>
-          <input type='image' src="/images/up.png" alt="Submit Form" value='Upvote'>
-        </form>
-        <span><%= @question.score %></span>
-        <form action='/questions/<%= @question.id %>/vote' method='post'>
-          <input type='hidden' name='up_down' value='-1'>
-          <input type='image' src="/images/down.png" alt="Submit Form" value='Downvote'>
-        </form>
-      </div>
+          <form class='upvote' action='/questions/<%= @question.id %>/vote' method='post'>
+            <input type='hidden' name='up_down' value='1'>
+            <input type='image' src="/images/up.png" alt="Submit Form" value='Upvote'>
+          </form>
+          <span id='score'><%= @question.score %></span>
+          <form class='downvote' action='/questions/<%= @question.id %>/vote' method='post'>
+            <input type='hidden' name='up_down' value='-1'>
+            <input type='image' src="/images/down.png" alt="Submit Form" value='Downvote'>
+          </form>
+        </div>
       </td>
       <td class="postcell">
         <div>
