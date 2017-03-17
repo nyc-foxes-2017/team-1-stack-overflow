@@ -5,13 +5,14 @@ get '/questions' do
 
 end
 
-get '/questions/ask' do
+get '/questions/new' do
 # Shows a form for a new question
+  redirect '/404' if !signed_in?
   erb :'questions/new'
 end
 
 
-post '/questions/ask' do
+post '/questions/new' do
   require_user
 # Save the question into database, otherwise show page with
   @question = Question.new(params[:question])
@@ -42,12 +43,14 @@ end
 # Stretch Challenges
 
 get '/questions/:id/edit' do
+  redirect '/404' if !current_user
   @question = Question.find_by(id: params[:id])
   require_matching_user(@question.user_id)
   erb :'questions/edit'
 end
 
 put '/questions/:id/edit' do
+  redirect '/404' if !current_user
   question = Question.find_by(id: params[:id])
   require_matching_user(question.user_id)
   question.update_attributes(params[:question])
@@ -55,6 +58,7 @@ put '/questions/:id/edit' do
 end
 
 delete '/questions/:id/delete' do
+  redirect '/404' if !current_user
   question = Question.find_by(id: params[:id])
   require_matching_user(question.user_id)
   question.transaction do

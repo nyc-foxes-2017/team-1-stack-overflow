@@ -14,7 +14,11 @@
           <input class="btn-outlined" type="submit" value="Delete">
         </form>
         <% end %>
-        <button type="button" class="btn-outlined right" onclick="location.href='/questions/ask'"/> Ask A Question </button>
+        <% if signed_in?%>
+     <button type="button" class="btn-outlined right" onclick="location.href='/questions/new'"/> Ask A Question </button>
+     <% else %>
+     <button type="button" class="btn-outlined right" onclick="location.href='/login'"/> Ask A Question </button>
+     <% end %>
 
       </td>
     </tr>
