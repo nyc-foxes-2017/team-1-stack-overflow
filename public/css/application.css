@@ -336,3 +336,7 @@ article a {
   margin: 0 auto;
   text-align: center;
 }
+
+#new_answer {
+  margin-left: 20px;
+}
