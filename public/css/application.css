@@ -295,3 +295,7 @@ article a {
   display: inline;
 }
 
+#img-404, #warning-404, #link-404 {
+  margin: 0 auto;
+  text-align: center;
+}
