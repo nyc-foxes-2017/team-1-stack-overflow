@@ -5,6 +5,7 @@ get '/questions/:id/answers/new' do
 end
 
 post '/questions/:id/answers' do
+  require_user
   @question = Question.find_by(id: params[:id])
   @answer = Answer.new(params[:answer])
   @answer.question_id = params[:id]
@@ -31,6 +32,7 @@ end
 
 post '/questions/:id/solved/:answer_id' do
   @question = Question.find_by(id: params[:id])
+  require_matching_user(@question.user_id)
   answer = Answer.find_by(id: params[:answer_id])
   answer.best_answer = true
   answer.save
