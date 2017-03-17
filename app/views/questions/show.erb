@@ -30,7 +30,7 @@
           <input type='hidden' name='up_down' value='1'>
           <input type='submit' value='Upvote'>
         </form>
-        <span><%= @question.votes.count %></span>
+        <span><%= @question.score %></span>
         <form action='/questions/<%= @question.id %>/vote' method='post'>
           <input type='hidden' name='up_down' value='-1'>
           <input type='submit' value='Downvote'>
@@ -81,7 +81,7 @@
           <input type='hidden' name='up_down' value='1'>
           <input type='submit' value='Upvote'>
         </form>
-        <span><%= @question.votes.count %></span>
+        <span><%= answer.score %></span>
         <form action='/answers/<%= answer.id %>/vote' method='post'>
           <input type='hidden' name='up_down' value='-1'>
           <input type='submit' value='Downvote'>
