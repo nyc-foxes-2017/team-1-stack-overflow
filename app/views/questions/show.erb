@@ -41,11 +41,11 @@
         <div>
         <%= @question.question_content %>
       </div>
-
-      <div>
-        <a href="#">comment</a>
-      </div>
-
+    </td>
+      <td class="postcell">
+        <div>
+          <a href="#">comment</a>
+        </div>
       </td>
     </tr>
   </tbody>
@@ -65,75 +65,19 @@
   </tbody>
 </table>
 
-<% @question.answers.each do |answer| %>
+<div class="answer-container">
+  <% @question.answers.each do |answer| %>
 
-<table class = "answer-properties">
-  <tbody>
-    <tr>
-      <td class="votecell">
-        <% if answer.best_answer %>
-          <img class="inline-block" src="/images/check.png">
-        <% end %>
-      </td>
-      <td class="votecell">
-        <div class="questionvotes">
-        <form action='/answers/<%= answer.id %>/vote' method='post'>
-          <input type='hidden' name='up_down' value='1'>
-          <input type='submit' value='Upvote'>
-        </form>
-        <span><%= answer.score %></span>
-        <form action='/answers/<%= answer.id %>/vote' method='post'>
-          <input type='hidden' name='up_down' value='-1'>
-          <input type='submit' value='Downvote'>
-        </form>
-      </div>
-      </td>
-      <td class="postcell">
+  <%= erb :'partials/_answer', locals: {answer: answer }%>
 
-      <div class="inline-block">
-        <%= answer.answer_content %>
-      </div>
+  <% end %>
+</div>
 
-    </td>
-    <% if current_user? && !@question.has_best_answer? %>
-      <td class="postcell">
-        <div class="inline-block">
-          <button class="btn-outlined green right" onclick="location.href='/questions/<%=@question.id%>/solved/<%=answer.id%>'"> Mark as Solved</button>
-        </div>
-      </td>
-    <% end %>
-    <td class="postcell">
-      <div>
-        <a href="#">comment</a>
-      </div>
-    </td>
-      </td>
-    </tr>
-  </tbody>
-</table>
-
-<table class = "answer-comments">
-  <tbody>
-    <tr>
-      <td class="">
-
-        <% answer.comments.each do |answer_comment| %>
-          <p><%=answer_comment.comment_content %></p>
-        <%end %>
-
-      </td>
-    </tr>
-  </tbody>
-</table>
-
-<% end %>
-
-
-
-<form method="post" action='/questions/<%="#{@question.id}"%>/answers'>
-  <textarea class="block" name="answer[answer_content]" cols="65" rows="10"></textarea>
-  <div class="block">
-    <input class="pretty_button" type="submit" value="Post Your Answer">
-  </div>
-</form>
-
+<div id="new_answer">
+  <form  id="answers" method="post" action='/questions/<%="#{@question.id}"%>/answers'>
+    <textarea class="block" name="answer[answer_content]" cols="65" rows="10"></textarea>
+    <div class="block">
+      <input class="pretty_button" type="submit" value="Post Your Answer">
+    </div>
+  </form>
+</div>
