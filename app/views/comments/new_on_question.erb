@@ -1,0 +1,14 @@
+<%= erb :'partials/_errors'%>
+<h2 class="transparent inline-block">Comment.</h2>
+
+
+<p><%= @question.question_content %></p>
+
+
+
+<div>
+  <form id "comment-on-question" method="post" action="/questions/<%=@question.id%>/comments">
+
+<%= erb :"/partials/_new_form" %>
+  </form>
+</div>
