@@ -12,6 +12,7 @@ end
 
 
 post '/questions/ask' do
+  require_user
 # Save the question into database, otherwise show page with
   @question = Question.new(params[:question])
   @question.views = 0
@@ -40,18 +41,20 @@ end
 
 get '/questions/:id/edit' do
   @question = Question.find_by(id: params[:id])
+  require_matching_user(@question.user_id)
   erb :'questions/edit'
 end
 
 put '/questions/:id/edit' do
   question = Question.find_by(id: params[:id])
-
+  require_matching_user(question.user_id)
   question.update_attributes(params[:question])
   redirect "/questions/#{question.id}"
 end
 
 delete '/questions/:id/delete' do
   question = Question.find_by(id: params[:id])
+  require_matching_user(question.user_id)
   question.transaction do
     question.answers.map { |answer| answer.comments.destroy_all }
     question.answers.map { |answer| answer.votes.destroy_all }
