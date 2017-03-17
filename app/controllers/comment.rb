@@ -1,10 +1,12 @@
 get '/questions/:id/comments/new' do
+  require_user
   @question = Question.find_by(id: params[:id])
 
   erb :"/comments/new_on_question"
 end
 
 post '/questions/:id/comments' do
+  require_user
   @question = Question.find_by(id: params[:id])
 
   @comment = @question.comments.new(params[:comment])
@@ -19,6 +21,7 @@ end
 
 
 get '/questions/:question_id/answers/:answer_id/comments/new' do
+  require_user
   question = Question.find_by(id: params[:question_id])
   @answer = Answer.find_by(id: params[:answer_id])
 
@@ -26,6 +29,7 @@ get '/questions/:question_id/answers/:answer_id/comments/new' do
 end
 
 post '/questions/:question_id/answers/:answer_id/comments' do
+  require_user
   question = Question.find_by(id: params[:question_id])
   @answer = Answer.find_by(id: params[:answer_id])
   @comment = @answer.comments.new(params[:comment])
