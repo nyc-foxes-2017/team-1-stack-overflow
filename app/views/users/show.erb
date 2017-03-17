@@ -5,39 +5,33 @@
     <div class='count'><%= @user.reputation %></div>
     <div class='mini'>reputation</div>
     <p class='user-description'>User descriptions - coming soon to a #stretchgoal near you</p>
-    <div class='user-answers'>
+    <span class='user-answers'>
       <div class='count'><%= @answers.count %></div>
       <div class='mini'>answers</div>
-    </div>
-    <div class='user-questions'>
+    </span>
+    <span class='user-questions'>
       <div class='count'><%= @questions.count %></div>
       <div class='mini'>questions</div>
-    </div>
-    <div'user-reached'>
+    </span>
+    <span class = 'user-reached'>
       <div class='count'><%= @user.people_reached %></div>
       <div class='mini'>people reached</div>
-    </div>
+    </span>
   </div>
   <div class='posts'>
-    <h4>Top Posts</h4>
-    <span class='tab'>All</span>
-    <span class='tab'>Questions</span>
-    <span class='tab'>Answers</span>
-    <div class='tab-divider'></div>
-    <span class='tab'>Votes</span>
-    <span class='tab'>Newest</span>
+    <h4>Posts</h4>
   </div>
   <div class='user-posts'>
     <ul>
       <% (@questions + @answers).each do |post| %>
         <li>
-          <div class='count'><%= post.votes.count %></div>
+          <span class='count'><%= post.score %></span>
           <% if post.is_a?(Answer) %>
             <a href="/questions/<%= post.question.id %>"><%= post.question.title %></a>
           <% elsif post.is_a?(Question) %>
             <a href="/questions/<%= post.id %>"><%= post.title %></a>
           <% end %>
-          <span class='date'><%= post.created_at %></span>
+          <span class='time-created'><%= post.created_at %></span>
         </li>
       <% end %>
     </ul>
