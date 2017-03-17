@@ -26,16 +26,16 @@
     <tr>
       <td class="votecell">
         <div class="questionvotes">
-        <form action='/questions/<%= @question.id %>/vote' method='post'>
-          <input type='hidden' name='up_down' value='1'>
-          <input type='image' src="/images/up.png" alt="Submit Form" value='Upvote'>
-        </form>
-        <span><%= @question.score %></span>
-        <form action='/questions/<%= @question.id %>/vote' method='post'>
-          <input type='hidden' name='up_down' value='-1'>
-          <input type='image' src="/images/down.png" alt="Submit Form" value='Downvote'>
-        </form>
-      </div>
+          <form class='upvote' action='/questions/<%= @question.id %>/vote' method='post'>
+            <input type='hidden' name='up_down' value='1'>
+            <input type='image' src="/images/up.png" alt="Submit Form" value='Upvote'>
+          </form>
+          <span id='score'><%= @question.score %></span>
+          <form class='downvote' action='/questions/<%= @question.id %>/vote' method='post'>
+            <input type='hidden' name='up_down' value='-1'>
+            <input type='image' src="/images/down.png" alt="Submit Form" value='Downvote'>
+          </form>
+        </div>
       </td>
       <td class="postcell">
         <div>
@@ -46,6 +46,8 @@
   </tbody>
 </table>
 
+
+
 <div class="question-comments">
     <% @question.comments.each do |question_comment| %>
       <p class="question-comment"><%= question_comment.comment_content %></p>
@@ -53,6 +55,7 @@
     <p class="question-comment"> <a href="<%=@question.id%>/comments/new">add a comment</a></p>
 </div>
 
+<div class="question-count"><h3><span id="answer_number"><%= @question.answers.count %></span> Answers</h3></div>
 
 <div class="answer-container">
   <% @question.answers.each do |answer| %>
@@ -62,12 +65,16 @@
 
   <% end %>
 </div>
+<% if signed_in?%>
+  <div id="new_answer">
+    <form  id="answers" method="post" action='/questions/<%="#{@question.id}"%>/answers'>
+      <textarea class="block" name="answer[answer_content]" cols="65" rows="10"></textarea>
+      <div class="block">
+        <input class="pretty_button" type="submit" value="Post Your Answer">
+      </div>
+    </form>
+  </div>
+<% else %>
+  <h3>Please sign in to answer this question.</h3>
+<% end %>
 
-<div id="new_answer">
-  <form  id="answers" method="post" action='/questions/<%="#{@question.id}"%>/answers'>
-    <textarea class="block" name="answer[answer_content]" cols="65" rows="10"></textarea>
-    <div class="block">
-      <input class="pretty_button" type="submit" value="Post Your Answer">
-    </div>
-  </form>
-</div>
