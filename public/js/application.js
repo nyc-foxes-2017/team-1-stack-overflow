@@ -3,6 +3,7 @@ $(document).ready(function() {
     event.preventDefault();
     url = $(this).attr('action');
     data = $(this).serialize();
+    debugger
     $.ajax({
       url: url,
       method: 'post',

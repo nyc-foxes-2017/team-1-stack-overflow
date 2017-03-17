@@ -40,11 +40,11 @@
       <td class="postcell">
         <div>
         <%= @question.question_content %>
-      </div>
-    </td>
+        </div>
+      </td>
       <td class="postcell">
         <div>
-          <a href="#">comment</a>
+          <a href="<%=@question.id%>/comments/new">comment</a>
         </div>
       </td>
     </tr>
@@ -65,8 +65,10 @@
   </tbody>
 </table>
 
+
 <div class="answer-container">
   <% @question.answers.each do |answer| %>
+
 
   <%= erb :'partials/_answer', locals: {answer: answer }%>
 

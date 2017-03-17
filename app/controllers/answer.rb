@@ -11,10 +11,10 @@ post '/questions/:id/answers' do
   @answer.question_id = params[:id]
   @answer.user_id = session[:user]
 
+
   if request.xhr?
     if @answer.save
       status 200
-
       erb :'partials/_answer', layout: false, locals: {answer: @answer}
     else
       status 442
