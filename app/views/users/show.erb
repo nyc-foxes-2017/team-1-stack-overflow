@@ -31,7 +31,7 @@
           <% elsif post.is_a?(Question) %>
             <a href="/questions/<%= post.id %>"><%= post.title %></a>
           <% end %>
-          <span class='time-created'><%= post.created_at %></span>
+          <span class='time-user'><%= post.created_at %></span>
         </li>
       <% end %>
     </ul>
