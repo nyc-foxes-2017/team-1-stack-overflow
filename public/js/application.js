@@ -10,8 +10,14 @@ $(document).ready(function() {
     }).done(function(response){
       $('.answer-container').append(response);
       $('#answers').trigger("reset");
+      var i = $('#answer_number').html();
+      var i = parseInt(i)
+      i += 1
+      var i = i.toString();
+      $('#answer_number').html(i);
     })
   })
+
   // submit answer ends
   $(".answer-container").on('submit', '#solved-button', function(e) {
     e.preventDefault(e)
