@@ -1,5 +1,5 @@
 
-<table class = "question-main">
+<table class = "question-main ">
   <tbody>
     <tr>
       <td>
@@ -7,7 +7,12 @@
     </td>
 
       <td>
-        <a href = "/questions/ask"> Ask Question</a>
+        <button class="btn-outlined right" onclick="location.href='/questions/<%=@question.id%>/edit'"> Edit</button>
+        <button type="button" class="btn-outlined right" onclick="location.href='/questions/ask'"/> Ask A Question </button>
+        <form class="inline-block" method="post" action="/questions/<%=@question.id%>/delete">
+          <input type="hidden" name="_method" value="delete">
+          <input class="btn-outlined" type="submit" value="Delete">
+        </form>
       </td>
     </tr>
   </tbody>
