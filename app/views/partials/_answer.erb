@@ -1,7 +1,7 @@
   <table class = "answer-properties">
     <tbody>
       <tr>
-        <td class="votecell">
+        <td id="checkmark" class="votecell">
           <% if answer.best_answer %>
             <img class="inline-block" src="/images/check.png">
           <% end %>
@@ -29,7 +29,9 @@
       <% if current_user? && !@question.has_best_answer? %>
         <td class="postcell">
           <div class="inline-block">
-            <button class="btn-outlined green right" onclick="location.href='/questions/<%=@question.id%>/solved/<%=answer.id%>'"> Mark as Solved</button>
+            <form id='solved-button' action='/questions/<%=@question.id%>/solved/<%= answer.id %>' method='post'>
+              <input type='submit' class="btn-outlined green right" value='Mark as Solved'>
+            </form>
           </div>
         </td>
       <% end %>
