@@ -31,6 +31,8 @@ get '/questions/:id' do
     @answers = @question.answers
     @question_comments = @question.comments
     @answer_comments = @answers.map { |answer| answer.comments }
+    @question.views += 1
+    @question.save
     erb :'questions/show'
   else
     erb :'404'

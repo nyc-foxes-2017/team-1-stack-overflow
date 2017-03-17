@@ -22,8 +22,9 @@ $(document).ready(function() {
       method: 'post'
     }).done(function(response){
       $('#checkmark').append(response)
+      $("#solved-button").hide()
     })
-    $("#solved-button").hide()
+
   })
 });
 
