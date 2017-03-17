@@ -217,6 +217,12 @@ article a {
   float: right;
   margin-top: 40px;
 }
+.time-answer {
+  margin: 0;
+  font-size: 11px;
+  color: #9199a1;
+  margin-top: 40px;
+}
 .question-comment {
   border-bottom: #e4e6e8 1px solid;
   font-size: 11px;

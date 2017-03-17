@@ -42,6 +42,12 @@
         <%= @question.question_content %>
         </div>
       </td>
+      <td class="postcell">
+      <div class="time-answer">
+      --
+        <a href="/users/<%= @question.user_id%>"> <%= @question.user.username %> </a>
+      </div>
+      </td>
     </tr>
   </tbody>
 </table>
