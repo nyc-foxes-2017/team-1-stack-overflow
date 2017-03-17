@@ -7,12 +7,15 @@
     </td>
 
       <td>
-        <button class="btn-outlined right" onclick="location.href='/questions/<%=@question.id%>/edit'"> Edit</button>
-        <button type="button" class="btn-outlined right" onclick="location.href='/questions/ask'"/> Ask A Question </button>
-        <form class="inline-block" method="post" action="/questions/<%=@question.id%>/delete">
+        <% if current_user? %>
+         <button class="btn-outlined right" onclick="location.href='/questions/<%=@question.id%>/edit'"> Edit</button>
+          <form class="inline-block" method="post" action="/questions/<%=@question.id%>/delete">
           <input type="hidden" name="_method" value="delete">
           <input class="btn-outlined" type="submit" value="Delete">
         </form>
+        <% end %>
+        <button type="button" class="btn-outlined right" onclick="location.href='/questions/ask'"/> Ask A Question </button>
+
       </td>
     </tr>
   </tbody>
@@ -63,11 +66,17 @@
 </table>
 
 <% @question.answers.each do |answer| %>
+
 <table class = "answer-properties">
   <tbody>
     <tr>
       <td class="votecell">
-        <div class="votes">
+        <% if answer.best_answer %>
+          <img class="inline-block" src="/images/check.png">
+        <% end %>
+      </td>
+      <td class="votecell">
+        <div class="questionvotes">
         <form action='/answers/<%= answer.id %>/vote' method='post'>
           <input type='hidden' name='up_down' value='1'>
           <input type='submit' value='Upvote'>
@@ -81,14 +90,23 @@
       </td>
       <td class="postcell">
 
-      <div>
+      <div class="inline-block">
         <%= answer.answer_content %>
       </div>
 
+    </td>
+    <% if current_user? && !@question.has_best_answer? %>
+      <td class="postcell">
+        <div class="inline-block">
+          <button class="btn-outlined green right" onclick="location.href='/questions/<%=@question.id%>/solved/<%=answer.id%>'"> Mark as Solved</button>
+        </div>
+      </td>
+    <% end %>
+    <td class="postcell">
       <div>
         <a href="#">comment</a>
       </div>
-
+    </td>
       </td>
     </tr>
   </tbody>
