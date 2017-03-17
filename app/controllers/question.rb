@@ -52,6 +52,11 @@ end
 
 delete '/questions/:id/delete' do
   question = Question.find_by(id: params[:id])
+  # binding.pry
+  question.answers.map { |answer| answer.comments.destroy_all }
+
+  question.answers.destroy_all
+  question.comments.destroy_all
   question.destroy
   redirect '/'
 end
