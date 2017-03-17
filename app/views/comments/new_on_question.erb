@@ -2,9 +2,13 @@
 <h2 class="transparent inline-block">Comment.</h2>
 
 
-<p><%= @question.question_content %></p>
+<p><%= @question.question_content %> - <%=@question.user.username %></p>
 
-
+<div class="question-comments">
+    <% @question.comments.each do |question_comment| %>
+      <p class="question-comment"><%= question_comment.comment_content %> - <%=question_comment.user.username %></p>
+    <%end %>
+</div>
 
 <div>
   <form id "comment-on-question" method="post" action="/questions/<%=@question.id%>/comments">

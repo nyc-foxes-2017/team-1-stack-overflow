@@ -32,6 +32,10 @@ $(document).ready(function() {
 
   })
 
+  $( function() {
+    $("#tabs").tabs()
+  })
+
   //upvote & downvote
 
   $('.question-properties .upvote, .question-properties .downvote').submit(function() {

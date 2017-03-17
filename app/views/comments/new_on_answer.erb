@@ -2,8 +2,13 @@
 <h2 class="transparent inline-block">Comment.</h2>
 
 
-<p><%= @answer.answer_content %></p>
+<p><%= @answer.answer_content %> - <%=@answer.user.username %></p>
 
+<div class="answer-comments">
+    <% @answer.comments.each do |answer_comment| %>
+        <p class="answer-comment"><%=answer_comment.comment_content%> - <%=answer_comment.user.username %> </p>
+    <%end %>
+</div>
 
 
 <div>
