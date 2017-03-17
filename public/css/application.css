@@ -77,6 +77,18 @@ nav button:hover{
   vertical-align: middle;
 }
 
+.questionvotes {
+  padding: 5px 5px ;
+  line-height: 1;
+  display: inline-block;
+  min-width: 38px;
+  margin: 0 3px 0 0;
+  font-size: 16px;
+  color: #848d95;
+  text-align: center;
+  vertical-align: middle;
+}
+
 .question-link:hover {
   color: #3af;
 }
@@ -142,10 +154,32 @@ nav button:hover{
   margin: 1em;
 }
 
+.btn-outlined{
+  color: #07c;
+  background-color: rgba(0,119,204,0);
+  border-color: #0095ff;
+  border-width: 1px;
+  box-shadow: none;
+  vertical-align: middle;
+  margin: 1em;
+}
+
+.green{
+  background-color: #5fba7d;
+  color: white;
+  border-color: #428257;
+}
+
 .btn-outlined:hover {
   background-color: #e6f4ff
 
 }
+
+
+.green:hover {
+  background-color: #428257
+}
+
 .transparent:hover {
   background-color: rgb(0,119,204);
   color:white;

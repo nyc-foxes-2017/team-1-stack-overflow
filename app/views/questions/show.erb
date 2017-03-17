@@ -7,12 +7,15 @@
     </td>
 
       <td>
-        <button class="btn-outlined right" onclick="location.href='/questions/<%=@question.id%>/edit'"> Edit</button>
-        <button type="button" class="btn-outlined right" onclick="location.href='/questions/ask'"/> Ask A Question </button>
-        <form class="inline-block" method="post" action="/questions/<%=@question.id%>/delete">
+        <% if current_user? %>
+         <button class="btn-outlined right" onclick="location.href='/questions/<%=@question.id%>/edit'"> Edit</button>
+          <form class="inline-block" method="post" action="/questions/<%=@question.id%>/delete">
           <input type="hidden" name="_method" value="delete">
           <input class="btn-outlined" type="submit" value="Delete">
         </form>
+        <% end %>
+        <button type="button" class="btn-outlined right" onclick="location.href='/questions/ask'"/> Ask A Question </button>
+
       </td>
     </tr>
   </tbody>
@@ -22,10 +25,16 @@
   <tbody>
     <tr>
       <td class="votecell">
-        <div class="votes">
-          <a href="#">Upvote</a>
-        <span><%= @question.votes.count %></span>
-        <a href="#">Downvote</a
+        <div class="questionvotes">
+        <form action='/questions/<%= @question.id %>/vote' method='post'>
+          <input type='hidden' name='up_down' value='1'>
+          <input type='submit' value='Upvote'>
+        </form>
+        <span><%= @question.score %></span>
+        <form action='/questions/<%= @question.id %>/vote' method='post'>
+          <input type='hidden' name='up_down' value='-1'>
+          <input type='submit' value='Downvote'>
+        </form>
       </div>
       </td>
       <td class="postcell">
@@ -33,9 +42,11 @@
         <%= @question.question_content %>
       </div>
 
+
       <div>
         <a href="<%=@question.id%>/comments/new">comment</a>
       </div>
+
 
       </td>
     </tr>
@@ -56,54 +67,21 @@
   </tbody>
 </table>
 
-<% @question.answers.each do |answer| %>
-<table class = "answer-properties">
-  <tbody>
-    <tr>
-      <td class="votecell">
-        <div class="votes">
-          <a href="#">Upvote</a>
-          <span><%= answer.votes.count %></span>
-          <a href="#">Downvote</a
-      </div>
-      </td>
-      <td class="postcell">
 
-      <div>
-        <%= answer.answer_content %>
-      </div>
-
-      <div>
-        <a href="/questions/<%=@question.id %>/answers/<%= answer.id %>/comments/new">comment</a>
-      </div>
-
-      </td>
-    </tr>
-  </tbody>
-</table>
-
-<table class = "answer-comments">
-  <tbody>
-    <tr>
-      <td class="">
-
-        <% answer.comments.each do |answer_comment| %>
-          <p><%=answer_comment.comment_content %></p>
-        <%end %>
-
-      </td>
-    </tr>
-  </tbody>
-</table>
-
-<% end %>
+<div class="answer-container">
+  <% @question.answers.each do |answer| %>
 
 
+  <%= erb :'partials/_answer', locals: {answer: answer }%>
 
-<form method="post" action='/questions/<%="#{@question.id}"%>/answers'>
-  <textarea class="block" name="answer[answer_content]" cols="65" rows="10"></textarea>
-  <div class="block">
-    <input class="pretty_button" type="submit" value="Post Your Answer">
-  </div>
-</form>
+  <% end %>
+</div>
 
+<div id="new_answer">
+  <form  id="answers" method="post" action='/questions/<%="#{@question.id}"%>/answers'>
+    <textarea class="block" name="answer[answer_content]" cols="65" rows="10"></textarea>
+    <div class="block">
+      <input class="pretty_button" type="submit" value="Post Your Answer">
+    </div>
+  </form>
+</div>
