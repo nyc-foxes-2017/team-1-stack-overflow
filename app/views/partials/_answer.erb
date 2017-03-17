@@ -24,11 +24,14 @@
         <div class="inline-block">
           <%= answer.answer_content %>
         </div>
+        <div>
+
+        </div>
 
 
       <div class="time-answer">
       --
-        <a href="/users/<%= answer.user_id%>"> <%= answer.user.username %> </a>
+        <a href="/users/<%= answer.user_id%>"> <%= answer.user.username %>  </a> <span><%= answer.time_since_posted %> ago</span>
       </div>
 
 
@@ -48,7 +51,7 @@
 
   <div class="answer-comments">
     <% answer.comments.each do |answer_comment| %>
-      <p class="answer-comment"><%=answer_comment.comment_content %></p>
+      <p class="answer-comment"><%=answer_comment.comment_content %> -- <%=answer_comment.user.username%> <%=answer_comment.time_since_posted%> ago</p>
     <%end %>
     <% if current_user %>
       <p class="answer-comment"><a href="/questions/<%=@question.id %>/answers/<%= answer.id %>/comments/new">add a comment</a></p>

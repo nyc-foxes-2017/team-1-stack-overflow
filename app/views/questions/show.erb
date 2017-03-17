@@ -49,7 +49,7 @@
       <td class="postcell">
       <div class="time-answer">
       --
-        <a href="/users/<%= @question.user_id%>"> <%= @question.user.username %> </a>
+        <a href="/users/<%= @question.user_id%>"> <%= @question.user.username %> </a><span><%= @question.time_since_posted %> ago</span>
       </div>
       </td>
     </tr>
@@ -58,7 +58,7 @@
 
 <div class="question-comments">
     <% @question.comments.each do |question_comment| %>
-      <p class="question-comment"><%= question_comment.comment_content %> - <%=question_comment.user.username%></p>
+      <p class="question-comment"><%= question_comment.comment_content %> - <%=question_comment.user.username%> <%=question_comment.time_since_posted%> ago</p>
     <%end %>
     <% if current_user %>
       <p class="question-comment"> <a href="<%=@question.id%>/comments/new">add a comment</a></p>
