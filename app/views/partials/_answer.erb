@@ -25,6 +25,10 @@
           <%= answer.answer_content %>
         </div>
 
+      <div class="time-created">
+         -- <a href="/users/<%= @question.user_id%>"> <%= @question.user.username %> </a>
+      </span>
+
       </td>
       <% if current_user? && !@question.has_best_answer? %>
         <td class="postcell">

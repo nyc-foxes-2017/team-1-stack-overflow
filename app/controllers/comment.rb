@@ -18,16 +18,16 @@ post '/questions/:id/comments' do
 end
 
 
-get '/questions/:id/answers/:id/comments/new' do
-  question = Question.find_by(id: params[:id])
-  @answer = Answer.find_by(id: params[:id])
+get '/questions/:question_id/answers/:answer_id/comments/new' do
+  question = Question.find_by(id: params[:question_id])
+  @answer = Answer.find_by(id: params[:answer_id])
 
   erb :"/comments/new_on_answer"
 end
 
-post '/questions/:id/answers/:id/comments' do
-  question = Question.find_by(id: params[:id])
-  @answer = Answer.find_by(id: params[:id])
+post '/questions/:question_id/answers/:answer_id/comments' do
+  question = Question.find_by(id: params[:question_id])
+  @answer = Answer.find_by(id: params[:answer_id])
   @comment = @answer.comments.new(params[:comment])
   @comment.user_id = session[:user]
 
