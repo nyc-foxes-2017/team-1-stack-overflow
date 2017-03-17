@@ -29,10 +29,11 @@ post '/questions/:id/answers' do
 end
 
 
-get '/questions/:id/solved/:answer_id' do
+post '/questions/:id/solved/:answer_id' do
   @question = Question.find_by(id: params[:id])
   answer = Answer.find_by(id: params[:answer_id])
   answer.best_answer = true
   answer.save
-  erb :'/questions/show'
+  return '<img class="inline-block" src="/images/check.png">'
+
 end
