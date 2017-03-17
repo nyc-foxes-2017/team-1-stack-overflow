@@ -49,13 +49,14 @@ $(document).ready(function() {
       params[pair.name] = pair.value;
       return params;
     }, {});
-    var thisAnswer = $(this).closest('.answer-properties')
+    var thisAnswer = $(this).closest('.answer-properties');
     $.ajax({
       url: $(this).attr('action'),
       type: 'POST',
       data: params
     }).done(function(data) {
-      thisAnswer.find('#score').text(data)
+      thisAnswer.find('#score').text(data);
+      thisAnswer.find('#score').css('border', '1px solid red');
     });
   }));
 
