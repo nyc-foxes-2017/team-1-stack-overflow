@@ -42,28 +42,16 @@
         <%= @question.question_content %>
         </div>
       </td>
-      <td class="postcell">
-        <div>
-          <a href="<%=@question.id%>/comments/new">comment</a>
-        </div>
-      </td>
     </tr>
   </tbody>
 </table>
 
-<table class = "question-comments">
-  <tbody>
-    <tr>
-      <td class="">
-
-        <% @question.comments.each do |question_comment| %>
-          <p><%= question_comment.comment_content %></p>
-        <%end %>
-
-      </td>
-    </tr>
-  </tbody>
-</table>
+<div class="question-comments">
+    <% @question.comments.each do |question_comment| %>
+      <p class="question-comment"><%= question_comment.comment_content %></p>
+    <%end %>
+    <p class="question-comment"> <a href="<%=@question.id%>/comments/new">add a comment</a></p>
+</div>
 
 
 <div class="answer-container">
