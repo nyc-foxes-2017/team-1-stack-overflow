@@ -3,16 +3,28 @@ get '/questions/:id/answers/new' do
   @question = Question.find_by(id: params[:id])
   erb :'/questions/show'
 end
+
 post '/questions/:id/answers' do
   @question = Question.find_by(id: params[:id])
   @answer = Answer.new(params[:answer])
   @answer.question_id = params[:id]
   @answer.user_id = session[:user]
-  if @answer.save
-    redirect "/questions/#{params[:id]}"
+
+  if request.xhr?
+    if @answer.save
+      status 200
+
+      erb :'partials/_answer', layout: false, locals: {answer: @answer}
+    else
+      status 442
+    end
   else
-    @errors = @answer.errors.full_messages
-    erb :'/questions/show'
+    if @answer.save
+      redirect "/questions/#{params[:id]}"
+    else
+      @errors = @answer.errors.full_messages
+      erb :'/questions/show'
+    end
   end
 end
 
