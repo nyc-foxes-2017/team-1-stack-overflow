@@ -1,4 +1,5 @@
 post '/questions/:question_id/vote' do
+  redirect back if !session[:user]
   vote = Vote.find_by(user_id: session[:user], votable_id: params[:question_id], votable_type: "Question")
   if !vote
     vote = Vote.new(up_down: params[:up_down].to_i, user_id: session[:user], votable_id: params[:question_id], votable_type: "Question")
@@ -10,6 +11,7 @@ post '/questions/:question_id/vote' do
 end
 
 post '/answers/:answer_id/vote' do
+  redirect back if !session[:user]
   vote = Vote.find_by(user_id: session[:user], votable_id: params[:question_id], votable_type: "Answer")
   if !vote
     vote = Vote.new(up_down: params[:up_down].to_i, user_id: session[:user], votable_id: params[:answer_id], votable_type: "Answer")
