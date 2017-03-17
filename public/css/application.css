@@ -199,7 +199,9 @@ nav button:hover{
   padding: 0px 20px 20px 20px;
   border: 1px dotted black;
 }
-article {
+
+
+article:not(:first-child) {
   border-top: 1px gray solid;
 }
 article a {
@@ -212,6 +214,8 @@ article a {
   margin: 0;
   font-size: 11px;
   color: #9199a1;
+  float: right;
+  margin-top: 40px;
 }
 .question-comment {
   border-bottom: #e4e6e8 1px solid;
@@ -261,6 +265,39 @@ article a {
 
 .logo-link{
   color:black;
+}
+
+
+#tabs ul {
+  list-style: none;
+  border-bottom: 1px solid #e4e6e8;
+}
+
+#tabmenu {
+  overflow: hidden;
+
+}
+
+#tabmenu a {
+  color: black;
+  position: relative;
+  display: block;
+  padding: 20px;
+
+}
+#tabmenu li {
+  float: left;
+  background-color: #fff;
+  color: #848d95;
+  border-top: 3px solid #fff;
+  font-size: 12px;
+}
+
+#tabmenu li.ui-state-active {
+  background-color: #fff;
+  border-top: 3px solid #f48024;
+  color: black;
+  border-bottom: 1px solid white;
 }
 * {
   -webkit-box-sizing: border-box;

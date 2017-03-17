@@ -48,7 +48,7 @@
 
 <div class="question-comments">
     <% @question.comments.each do |question_comment| %>
-      <p class="question-comment"><%= question_comment.comment_content %></p>
+      <p class="question-comment"><%= question_comment.comment_content %> - <%=question_comment.user.username%></p>
     <%end %>
     <% if current_user %>
       <p class="question-comment"> <a href="<%=@question.id%>/comments/new">add a comment</a></p>
