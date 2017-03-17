@@ -5,8 +5,11 @@
   <ul id="tabmenu">
     <li><a href="#recent">Most Recent</a></li>
     <li><a href="#viewed">Most Viewed</a></li>
-
-     <button type="button" class="btn-outlined right" onclick="location.href='/questions/ask'"/> Ask A Question </button>
+      <% if signed_in?%>
+     <button type="button" class="btn-outlined right" onclick="location.href='/questions/new'"/> Ask A Question </button>
+     <% else %>
+     <button type="button" class="btn-outlined right" onclick="location.href='/login'"/> Ask A Question </button>
+     <% end %>
   </ul>
 
 <div id="recent">

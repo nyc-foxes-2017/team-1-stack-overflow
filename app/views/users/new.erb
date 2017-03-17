@@ -1,4 +1,7 @@
 <div>
+  <% if @errors %>
+    <%= erb :'/partials/_errors' %>
+  <% end %>
   <form action='/users' method='post'>
     <label for='username'>Username:</label>
     <input name='username' type='text' placeholder='yourusername'>
