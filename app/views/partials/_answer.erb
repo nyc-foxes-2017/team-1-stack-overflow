@@ -26,7 +26,7 @@
         </div>
 
       <div class="time-created">
-         -- <a href="/users/<%= @question.user_id%>"> <%= @question.user.username %> </a>
+        <a href="/users/<%= @question.user_id%>"> <%= @question.user.username %> </a>
       </span>
 
       </td>
@@ -42,12 +42,12 @@
       </tr>
     </tbody>
   </table>
-      <div class="answer-comments">
-          <% answer.comments.each do |answer_comment| %>
-            <p class="answer-comment"><%=answer_comment.comment_content %></p>
-          <%end %>
-          <p class="answer-comment">
-        <a href="/questions/<%=@question.id %>/answers/<%= answer.id %>/comments/new">add a comment</a>
-      </p>
-      </div>
+  <div class="answer-comments">
+    <% answer.comments.each do |answer_comment| %>
+      <p class="answer-comment"><%=answer_comment.comment_content %></p>
+    <%end %>
+    <% if current_user %>
+      <p class="answer-comment"><a href="/questions/<%=@question.id %>/answers/<%= answer.id %>/comments/new">add a comment</a></p>
+  <% end %>
+  </div>
 

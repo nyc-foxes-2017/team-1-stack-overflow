@@ -46,35 +46,35 @@
   </tbody>
 </table>
 
-
-
 <div class="question-comments">
     <% @question.comments.each do |question_comment| %>
       <p class="question-comment"><%= question_comment.comment_content %></p>
     <%end %>
-    <p class="question-comment"> <a href="<%=@question.id%>/comments/new">add a comment</a></p>
+    <% if current_user %>
+      <p class="question-comment"> <a href="<%=@question.id%>/comments/new">add a comment</a></p>
+    <% end %>
 </div>
 
-<div class="question-count"><h3><span id="answer_number"><%= @question.answers.count %></span> Answers</h3></div>
-
 <div class="answer-container">
+  <div class="question-count"><h3><span id="answer_number"><%= @question.answers.count %></span> Answers</h3></div>
   <% @question.answers.each do |answer| %>
 
 
   <%= erb :'partials/_answer', locals: {answer: answer, question: @question}%>
 
   <% end %>
+
+  <% if signed_in?%>
+    <div id="new_answer">
+      <form  id="answers" method="post" action='/questions/<%="#{@question.id}"%>/answers'>
+        <textarea class="block" name="answer[answer_content]" cols="65" rows="10"></textarea>
+        <div class="block">
+          <input class="pretty_button" type="submit" value="Post Your Answer">
+        </div>
+      </form>
+    </div>
+  <% else %>
+    <h3>Please sign in to answer this question.</h3>
+  <% end %>
 </div>
-<% if signed_in?%>
-  <div id="new_answer">
-    <form  id="answers" method="post" action='/questions/<%="#{@question.id}"%>/answers'>
-      <textarea class="block" name="answer[answer_content]" cols="65" rows="10"></textarea>
-      <div class="block">
-        <input class="pretty_button" type="submit" value="Post Your Answer">
-      </div>
-    </form>
-  </div>
-<% else %>
-  <h3>Please sign in to answer this question.</h3>
-<% end %>
 
