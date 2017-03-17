@@ -10,12 +10,12 @@
           <div class="questionvotes">
           <form action='/answers/<%= answer.id %>/vote' method='post'>
             <input type='hidden' name='up_down' value='1'>
-            <input type='submit' value='Upvote'>
+            <input type='image' src="/images/up.png" alt="Submit Form" value='Upvote'>
           </form>
           <span><%= answer.score %></span>
           <form action='/answers/<%= answer.id %>/vote' method='post'>
             <input type='hidden' name='up_down' value='-1'>
-            <input type='submit' value='Downvote'>
+            <input type='image' src="/images/down.png" alt="Submit Form" value='Downvote'>
           </form>
         </div>
         </td>
