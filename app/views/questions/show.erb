@@ -26,9 +26,15 @@
     <tr>
       <td class="votecell">
         <div class="votes">
-          <a href="#">Upvote</a>
+        <form action='/questions/<%= @question.id %>/vote' method='post'>
+          <input type='hidden' name='up_down' value='1'>
+          <input type='submit' value='Upvote'>
+        </form>
         <span><%= @question.votes.count %></span>
-        <a href="#">Downvote</a
+        <form action='/questions/<%= @question.id %>/vote' method='post'>
+          <input type='hidden' name='up_down' value='-1'>
+          <input type='submit' value='Downvote'>
+        </form>
       </div>
       </td>
       <td class="postcell">
@@ -71,9 +77,15 @@
       </td>
       <td class="votecell">
         <div class="questionvotes">
-          <a href="#">Upvote</a>
-          <span><%= answer.votes.count %></span>
-          <a href="#">Downvote</a
+        <form action='/answers/<%= answer.id %>/vote' method='post'>
+          <input type='hidden' name='up_down' value='1'>
+          <input type='submit' value='Upvote'>
+        </form>
+        <span><%= @question.votes.count %></span>
+        <form action='/answers/<%= answer.id %>/vote' method='post'>
+          <input type='hidden' name='up_down' value='-1'>
+          <input type='submit' value='Downvote'>
+        </form>
       </div>
       </td>
       <td class="postcell">
