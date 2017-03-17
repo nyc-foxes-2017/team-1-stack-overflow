@@ -4,6 +4,6 @@
     <input class="block" type="text" name="question[title]" placeholder="<%=@question.title%>" value="<%=@question.try(:title)%>">
 
     <label for="content">Question:</label>
-    <textarea class="block" name="question[question_content]" cols="65" rows="10" placeholder="<%=@question.question_content%>" value="<%=@question.try(:question_content)%>"></textarea>
+    <textarea class="block" name="question[question_content]" cols="65" rows="10" value="<%=@question.try(:question_content)%>"><%=@question.question_content%></textarea>
     <input type="submit" value="Edit" class="pretty_button">
 </form>
