@@ -5,10 +5,18 @@ post '/questions/:question_id/vote' do
   if !vote
     vote = question.votes.new(up_down: params[:up_down].to_i, user_id: session[:user])
     vote.save
+  elsif vote.up_down != params[:up_down].to_i
+    vote.destroy
+    vote = question.votes.new(up_down: params[:up_down].to_i, user_id: session[:user])
+    vote.save
   else
     vote.destroy
   end
-  redirect "/questions/#{params[:question_id]}"
+  if request.xhr?
+    question.score.to_s
+  else
+    redirect "/questions/#{params[:question_id]}"
+  end
 end
 
 post '/answers/:answer_id/vote' do
@@ -18,8 +26,16 @@ post '/answers/:answer_id/vote' do
   if !vote
     vote = answer.votes.new(up_down: params[:up_down].to_i, user_id: session[:user])
     vote.save
+  elsif vote.up_down != params[:up_down].to_i
+    vote.destroy
+    vote = answer.votes.new(up_down: params[:up_down].to_i, user_id: session[:user])
+    vote.save
   else
    vote.destroy
   end
-  redirect "/questions/#{answer.question.id}"
+  if request.xhr?
+    answer.score.to_s
+  else
+    redirect "/questions/#{answer.question.id}"
+  end
 end
