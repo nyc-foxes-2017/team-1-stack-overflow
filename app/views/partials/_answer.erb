@@ -39,26 +39,15 @@
           </div>
         </td>
       <% end %>
-      <td class="postcell">
-        <div>
-          <a href="/questions/<%=@question.id %>/answers/<%= answer.id %>/comments/new">comment</a>
-        </div>
-      </td>
-        </td>
       </tr>
     </tbody>
   </table>
-
-  <table class = "answer-comments">
-    <tbody>
-      <tr>
-        <td class="">
-
+      <div class="answer-comments">
           <% answer.comments.each do |answer_comment| %>
-            <p><%=answer_comment.comment_content %></p>
+            <p class="answer-comment"><%=answer_comment.comment_content %></p>
           <%end %>
+          <p class="answer-comment">
+        <a href="/questions/<%=@question.id %>/answers/<%= answer.id %>/comments/new">add a comment</a>
+      </p>
+      </div>
 
-        </td>
-      </tr>
-    </tbody>
-  </table>

@@ -213,7 +213,25 @@ article a {
   font-size: 11px;
   color: #9199a1;
 }
+.question-comment {
+  border-bottom: #e4e6e8 1px solid;
+  font-size: 11px;
+  font-color: gray;
+}
 
+.answer-comment {
+  border-bottom: #e4e6e8 1px solid;
+  font-size: 11px;
+  font-color: gray;
+}
+
+.question-comments {
+  padding-left:100px;
+}
+
+.answer-comments {
+  padding-left:100px;
+}
 .logo {
   width: 35px;
   height: 35px;
