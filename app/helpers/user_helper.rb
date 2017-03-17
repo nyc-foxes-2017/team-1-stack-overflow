@@ -12,5 +12,5 @@ def require_user
 end
 
 def require_matching_user(user_id)
-  redirect back if !session[:user] == user_id
+  redirect back if !current_user.id == user_id
 end
