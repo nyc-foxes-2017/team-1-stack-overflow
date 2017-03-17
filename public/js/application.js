@@ -43,6 +43,21 @@ $(document).ready(function() {
     });
   });
 
+  $('.answer-container').on('submit', '.upvote, .downvote', (function() {
+    event.preventDefault();
+    var params = $(this).serializeArray().reduce(function(params, pair) {
+      params[pair.name] = pair.value;
+      return params;
+    }, {});
+    var thisAnswer = $(this).closest('.answer-properties')
+    $.ajax({
+      url: $(this).attr('action'),
+      type: 'POST',
+      data: params
+    }).done(function(data) {
+      thisAnswer.find('#score').text(data)
+    });
+  }));
 
 });
 
