@@ -15,3 +15,12 @@ post '/questions/:id/answers' do
     erb :'/questions/show'
   end
 end
+
+
+get '/questions/:id/solved/:answer_id' do
+  @question = Question.find_by(id: params[:id])
+  answer = Answer.find_by(id: params[:answer_id])
+  answer.best_answer = true
+  answer.save
+  erb :'/questions/show'
+end
