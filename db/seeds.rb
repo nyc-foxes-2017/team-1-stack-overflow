@@ -1,9 +1,16 @@
+User.destroy_all
+Question.destroy_all
+Answer.destroy_all
+Comment.destroy_all
+Vote.destroy_all
+
+
 User.create! [
 
-  {:username => 'michael', :email =>'michael@email.com', :password_digest => 'password'},
-  {:username => 'peter', :email =>'peter@email.com', :password_digest => 'password'},
-  {:username => 'thomas', :email =>'thomas@email.com', :password_digest => 'password'},
-  {:username => 'sophia', :email =>'sophia@email.com', :password_digest => 'password'}
+  {:username => 'michael', :email =>'michael@email.com', :password =>'password'},
+  {:username => 'peter', :email =>'peter@email.com', :password => 'password'},
+  {:username => 'thomas', :email =>'thomas@email.com', :password => 'password'},
+  {:username => 'sophia', :email =>'sophia@email.com', :password => 'password'}
 
 ]
 
