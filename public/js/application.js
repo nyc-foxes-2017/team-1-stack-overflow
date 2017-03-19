@@ -70,5 +70,38 @@ $(document).ready(function() {
     });
   }));
 
+  $('.question-comments').on('click', '#show-question-comment-form', function(event){
+    $('form#answers').hide();
+    event.preventDefault();
+    var url = $(this).attr('href');
+    $.ajax({
+      url:url,
+      method:'get'
+    }).done(function(response){
+      $('#question-comment-container').append(response);
+    });
+  });
+
+  $('#question-comment-container').on('submit', '#comment-on-question',function(event){
+
+    event.preventDefault();
+    var url = $(this).attr('action'),
+        method = $(this).attr('method'),
+        data = $(this).serialize();
+      $.ajax({
+        url: url,
+        method: method,
+        data: data
+      }).done(function(response){
+        $('.question-comments:nth-last-child(2)').append(response);
+        $('#question-comment-container').empty();
+      }).fail(error){
+        // error handling
+      }
+
+  })
+
+
+
 });
 
