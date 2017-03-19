@@ -11,8 +11,5 @@
 </div>
 
 <div>
-  <form id "comment-on-question" method="post" action="/questions/<%=@question.id%>/comments">
-
-<%= erb :"/partials/_new_form" %>
-  </form>
+   <%= erb :'/partials/_new_on_question', locals:{question:@question} %>
 </div>

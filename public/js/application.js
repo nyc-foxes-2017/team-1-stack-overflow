@@ -70,7 +70,8 @@ $(document).ready(function() {
     });
   }));
 
-  $('.question-comments').on('click', '#show-question-comment-form', function(event){
+// SHOW QUESTION COMMENT FORM
+  $('.question-comment').on('click', '#show-question-comment-form', function(event){
     $('form#answers').hide();
     event.preventDefault();
     var url = $(this).attr('href');
@@ -81,6 +82,8 @@ $(document).ready(function() {
       $('#question-comment-container').append(response);
     });
   });
+
+  // ADD COMMENT TO QUESTION
 
   $('#question-comment-container').on('submit', '#comment-on-question',function(event){
 
@@ -93,14 +96,52 @@ $(document).ready(function() {
         method: method,
         data: data
       }).done(function(response){
-        $('.question-comments:nth-last-child(2)').append(response);
+        $('p.question-comment:nth-last-child(2)').after(response);
         $('#question-comment-container').empty();
-      }).fail(error){
-        // error handling
-      }
+        $('form#answers').show();
+      }).fail(function(error){
+        if (error){
+          alert("You must write a comment first.")
+        }
+      });
 
-  })
+  });
+//SHOW ANSWER COMMENT FORM
 
+  $('.answer-comment').on('click', '#show-answer-comment-form', function(event){
+    $('form#answers').hide();
+    event.preventDefault();
+    var url = $(this).attr('href');
+    $.ajax({
+      url:url,
+      method:'get'
+    }).done(function(response){
+      $('#answer-comment-container').append(response);
+    });
+  });
+
+  // ADD COMMENT TO ANSWER
+
+  $('#answer-comment-container').on('submit', '#comment-on-answer',function(event){
+
+    event.preventDefault();
+    var url = $(this).attr('action'),
+        method = $(this).attr('method'),
+        data = $(this).serialize();
+      $.ajax({
+        url: url,
+        method: method,
+        data: data
+      }).done(function(response){
+        $('p.answer-comment:nth-last-child(2)').after(response);
+        $('#answer-comment-container').empty();
+        $('form#answers').show();
+      }).fail(function(error){
+        if (error){
+          alert("You must write a comment first.")
+        }
+      });
+  });
 
 
 });
