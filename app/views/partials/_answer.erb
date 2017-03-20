@@ -51,11 +51,11 @@
 
   <div class="answer-comments">
     <% answer.comments.each do |answer_comment| %>
-      <p class="answer-comment"><%=answer_comment.comment_content %> -- <%=answer_comment.user.username%> <%=answer_comment.time_since_posted%> ago</p>
+      <%= erb :'partials/_answer_comment', locals:{answer_comment:answer_comment} %>
     <%end %>
     <% if current_user %>
-      <p class="answer-comment"><a href="/questions/<%=@question.id %>/answers/<%= answer.id %>/comments/new">add a comment</a></p>
+      <p class="answer-comment"><a id="show-answer-comment-form" href="/questions/<%=@question.id %>/answers/<%= answer.id %>/comments/new">add a comment</a></p>
     <% end %>
   </div>
 
-
+<div id="answer-comment-container"></div>

@@ -58,12 +58,14 @@
 
 <div class="question-comments">
     <% @question.comments.each do |question_comment| %>
-      <p class="question-comment"><%= question_comment.comment_content %> - <%=question_comment.user.username%> <%=question_comment.time_since_posted%> ago</p>
+      <%= erb :'partials/_question_comment', locals:{question_comment:question_comment} %>
     <%end %>
     <% if current_user %>
-      <p class="question-comment"> <a href="<%=@question.id%>/comments/new">add a comment</a></p>
+      <p class="question-comment"> <a id ="show-question-comment-form" href="<%=@question.id%>/comments/new">add a comment</a></p>
     <% end %>
 </div>
+
+<div id="question-comment-container"></div>
 
 <div class="answer-container">
   <div class="question-count"><h3><span id="answer_number"><%= @question.answers.count %></span> Answers</h3></div>
